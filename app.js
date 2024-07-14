@@ -57,6 +57,17 @@ app.get("/location/*", async (req, res) => {
   }
 });
 
+app.get("/city/*", async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://api.map.baidu.com/geocoder?location=${req.params[0]}&output=json`
+    );
+    res.send(response.data);
+  } catch (error) {
+    res.status(500).send({ msg: "数据获取失败" });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
