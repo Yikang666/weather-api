@@ -57,10 +57,10 @@ app.get("/location/*", async (req, res) => {
   }
 });
 
-app.get("/city/*", async (req, res) => {
+app.get("/ip", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://api.map.baidu.com/geocoder?location=${req.params[0]}&output=json`
+      `https://ipvx.netart.cn/?ip=${req.ip}`
     );
     res.send(response.data);
   } catch (error) {
