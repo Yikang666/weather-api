@@ -59,9 +59,9 @@ app.get("/location/*", async (req, res) => {
 
 app.get("/ip", async (req, res) => {
   try {
-    const response = await axios.get(
-      `https://ipvx.netart.cn/?ip=${req.ip}`
-    );
+    const response = await axios.get("https://ipvx.netart.cn/", {
+      params: req.query,
+    });
     res.send(response.data);
   } catch (error) {
     res.status(500).send({ msg: "数据获取失败" });
